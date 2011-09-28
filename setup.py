@@ -153,20 +153,7 @@ c_ext = Feature(
                                     'bson/buffer.c',
                                     'bson/encoding_helpers.c'])])
 
-if "--no_ext" in sys.argv:
-    sys.argv = [x for x in sys.argv if x != "--no_ext"]
-    features = {}
-elif sys.byteorder == "big":
-    print """
-*****************************************************
-The optional C extensions are currently not supported
-on big endian platforms and will not be built.
-Performance may be degraded.
-*****************************************************
-"""
-    features = {}
-else:
-    features = {"c-ext": c_ext}
+features={}
 
 setup(
     name="pymongo",
